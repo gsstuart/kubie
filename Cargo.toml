@@ -11,31 +11,30 @@ license = "Zlib"
 name = "kubie"
 readme = "README.md"
 repository = "https://github.com/sbstp/kubie"
-version = "0.23.0"
+version = "0.23.1"
 
 [dependencies]
 anyhow = "1"
-atty = "0.2"
-clap = { version = "4.5.3", features = ["derive"] }
+clap = { version = "4.5.8", features = ["derive"] }
 cfg-if = "1"
 dirs = "5"
 fs2 = "0.4"
 glob = "0.3"
 lazy_static = "1"
 libc = "0.2"
-serde = {version = "1", features = ["derive"]}
+serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 serde_yaml = "0.9"
 signal-hook = "0.3"
 tempfile = "3"
 which = "6"
 wildmatch = "2"
-skim = "0.10.1"
+skim = "0.10.4"
 
 [dependencies.attohttpc]
 default-features = false
 features = ["compress", "json", "tls-rustls-native-roots"]
-version = "0.27"
+version = "0.28"
 optional = true
 
 [features]
