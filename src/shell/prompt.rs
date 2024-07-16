@@ -88,6 +88,7 @@ where
 
 const RED: u32 = 31;
 const GREEN: u32 = 32;
+const YELLOW: u32 = 33;
 const BLUE: u32 = 34;
 
 /// Generates a PS1 string that shows the current context, namespace and depth.
@@ -115,6 +116,7 @@ pub fn generate_ps1(settings: &Settings, depth: u32, shell_kind: ShellKind) -> S
         )
         .to_string(),
     );
+    parts.push(Color::new(YELLOW, "o‿0", shell_kind).to_string());
     if settings.prompt.show_depth && depth > 1 {
         parts.push(Color::new(BLUE, depth, shell_kind).to_string());
     }
