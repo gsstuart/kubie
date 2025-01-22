@@ -11,11 +11,11 @@ license = "Zlib"
 name = "kubie"
 readme = "README.md"
 repository = "https://github.com/sbstp/kubie"
-version = "0.23.1"
+version = "0.24.1"
 
 [dependencies]
 anyhow = "1"
-clap = { version = "4.5.8", features = ["derive"] }
+clap = { version = "4.5.26", features = ["derive"] }
 cfg-if = "1"
 dirs = "5"
 fs2 = "0.4"
@@ -27,7 +27,7 @@ serde_json = "1"
 serde_yaml = "0.9"
 signal-hook = "0.3"
 tempfile = "3"
-which = "6"
+which = "7"
 wildmatch = "2"
 skim = "0.10.4"
 

@@ -103,6 +103,11 @@ available below.
 # Default: unset
 shell: bash
 
+# For the commands `kubie edit/edit-config`
+# Possible values: Any installed text editor
+# Default: unset
+default_editor: vim
+
 # Configure where to look for kubernetes config files.
 configs:
 
@@ -128,7 +133,7 @@ prompt:
     # Disable kubie's custom prompt inside of a kubie shell. This is useful
     # when you already have a prompt displaying kubernetes information.
     # Default: false
-    disable: true
+    disable: false
 
     # When using recursive contexts, show depth when larger than 1.
     # Default: true
