@@ -119,14 +119,14 @@ impl Installed {
     pub fn get_contexts_matching(&self, pattern: &str, allow_multiple_contexts: bool) -> Vec<&Sourced<NamedContext>> {
         let mut result = vec![];
 
-        let contexts = if allow_multiple_contexts {
+        let patterns = if allow_multiple_contexts {
             pattern.split(' ').collect()
         } else {
             vec![pattern]
         };
 
-        for context in contexts {
-            let matcher = WildMatch::new(context);
+        for p in patterns {
+            let matcher = WildMatch::new(p);
             result.extend(self.contexts.iter().filter(|s| matcher.matches(&s.item.name)));
         }
         result
