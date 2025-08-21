@@ -75,6 +75,7 @@ pub fn exec(
             println!("CONTEXT => {}", context_src.item.name);
         }
         let kubeconfig = installed.make_kubeconfig_for_context(&context_src.item.name, Some(&namespace_name))?;
+        // eprintln!("running command: {:#?}", &args);
         let return_code = run_in_context(&kubeconfig, &args)?;
         if print_context {
             println!("{}", "-".repeat(20));
