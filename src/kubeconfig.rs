@@ -125,9 +125,13 @@ impl Installed {
             vec![pattern]
         };
 
-        for p in patterns {
+        for p in &patterns {
             let matcher = WildMatch::new(p);
-            result.extend(self.contexts.iter().filter(|s| matcher.matches(&s.item.name)));
+            let m: Vec<_> = self.contexts.iter().filter(|s| matcher.matches(&s.item.name)).collect();
+            if patterns.len() > 1 && m.is_empty() {
+                println!("WARNING: No context matching {p}");
+            }
+            result.extend(m);
         }
         result
     }
@@ -175,7 +179,14 @@ impl Installed {
         let str = mapping.get(key).unwrap().as_str().expect("value should be a string");
         let path = Path::new(str);
         if !path.is_absolute() {
-            mapping.insert(key.into(), parent.join(path).to_str().expect("path should be a valid unicode string").into());
+            mapping.insert(
+                key.into(),
+                parent
+                    .join(path)
+                    .to_str()
+                    .expect("path should be a valid unicode string")
+                    .into(),
+            );
         }
     }
 
@@ -192,7 +203,10 @@ impl Installed {
             .ok_or_else(|| anyhow!("Could not find context {}", context_name))?;
 
         context_src.item.context.namespace = namespace_name.map(Into::into);
-        let kubeconfig_dir = context_src.source.parent().expect("kubeconfig path should have a parent dir");
+        let kubeconfig_dir = context_src
+            .source
+            .parent()
+            .expect("kubeconfig path should have a parent dir");
 
         let cluster_src = self
             .find_cluster_by_name(&context_src.item.context.cluster, &context_src.source)
