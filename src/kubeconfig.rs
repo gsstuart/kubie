@@ -194,6 +194,7 @@ impl Installed {
 
         context_src.item.context.namespace = namespace_name.map(Into::into);
         let kubeconfig_dir = context_src.source.parent().expect("kubeconfig path should have a parent dir");
+
         let cluster_src = self
             .find_cluster_by_name(&context_src.item.context.cluster, &context_src.source)
             .cloned()
