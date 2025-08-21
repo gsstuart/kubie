@@ -117,8 +117,12 @@ impl Installed {
     }
 
     pub fn get_contexts_matching(&self, pattern: &str) -> Vec<&Sourced<NamedContext>> {
-        let matcher = WildMatch::new(pattern);
-        self.contexts.iter().filter(|s| matcher.matches(&s.item.name)).collect()
+        let mut result = vec![];
+        for kontext in pattern.split(' ').collect::<Vec<&str>>() {
+            let matcher = WildMatch::new(kontext);
+            result.extend(self.contexts.iter().filter(|s| matcher.matches(&s.item.name)));
+        }
+        result
     }
 
     pub fn delete_context(&mut self, name: &str) -> Result<()> {
