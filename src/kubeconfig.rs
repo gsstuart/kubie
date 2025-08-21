@@ -178,7 +178,7 @@ impl Installed {
             mapping.insert(key.into(), parent.join(path).to_str().expect("path should be a valid unicode string").into());
         }
     }
-    
+
     pub fn make_kubeconfig_for_context(
         &self,
         context_name: &str,
