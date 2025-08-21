@@ -3,7 +3,7 @@ authors = ["Simon Bernier St-Pierre <git@sbstp.ca>"]
 categories = ["command-line-utilities", "development-tools"]
 description = "A more powerful alternative to kubectx and kubens."
 documentation = "https://github.com/sbstp/kubie/blob/master/README.md"
-edition = "2018"
+edition = "2021"
 exclude = ["releases/**/*"]
 homepage = "https://github.com/sbstp/kubie"
 keywords = ["kubernetes", "kubectx", "kubens"]
@@ -11,13 +11,13 @@ license = "Zlib"
 name = "kubie"
 readme = "README.md"
 repository = "https://github.com/sbstp/kubie"
-version = "0.24.1"
+version = "0.26.0"
 
 [dependencies]
 anyhow = "1"
-clap = { version = "4.5.26", features = ["derive"] }
+clap = { version = "4.5.43", features = ["derive"] }
 cfg-if = "1"
-dirs = "5"
+dirs = "6"
 fs2 = "0.4"
 glob = "0.3"
 lazy_static = "1"
@@ -29,12 +29,19 @@ signal-hook = "0.3"
 tempfile = "3"
 which = "7"
 wildmatch = "2"
-skim = "0.10.4"
+skim = "0.20"
+
+[target.arm-unknown-linux-musleabi.dependencies]
+aws-lc-rs = { version = "1.13", default-features = false, features = [
+    "aws-lc-sys",
+    "prebuilt-nasm",
+    "bindgen",
+] }
 
 [dependencies.attohttpc]
 default-features = false
 features = ["compress", "json", "tls-rustls-native-roots"]
-version = "0.28"
+version = "0.30.1"
 optional = true
 
 [features]

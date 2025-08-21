@@ -61,7 +61,7 @@ pub fn context(
     settings: &Settings,
     skim_options: &SkimOptions,
     context_name: Option<String>,
-    mut namespace_name: Option<String>,
+    namespace_name: Option<String>,
     kubeconfigs: Vec<String>,
     recursive: bool,
 ) -> Result<()> {
@@ -74,10 +74,7 @@ pub fn context(
     let context_name = match context_name {
         Some(context_name) => context_name,
         None => match select_or_list_context(skim_options, &mut installed)? {
-            SelectResult::Selected(x) => {
-                namespace_name = None;
-                x
-            }
+            SelectResult::Selected(x) => x,
             _ => return Ok(()),
         },
     };
