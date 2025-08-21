@@ -116,9 +116,16 @@ impl Installed {
             .collect()
     }
 
-    pub fn get_contexts_matching(&self, pattern: &str) -> Vec<&Sourced<NamedContext>> {
+    pub fn get_contexts_matching(&self, pattern: &str, allow_multiple_contexts: bool) -> Vec<&Sourced<NamedContext>> {
         let mut result = vec![];
-        for context in pattern.split(' ') {
+
+        let contexts = if allow_multiple_contexts {
+            pattern.split(' ').collect()
+        } else {
+            vec![pattern]
+        };
+
+        for context in contexts {
             let matcher = WildMatch::new(context);
             result.extend(self.contexts.iter().filter(|s| matcher.matches(&s.item.name)));
         }
