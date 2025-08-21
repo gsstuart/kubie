@@ -58,8 +58,7 @@ pub fn exec(
     }
 
     let installed = kubeconfig::get_installed_contexts(settings)?;
-    let allow_multiple_contexts = settings.behavior.multiple_contexts_in_exec;
-    let mut matching = installed.get_contexts_matching(&context_name, allow_multiple_contexts);
+    let mut matching = installed.get_contexts_matching(&context_name, settings.behavior.multiple_contexts_in_exec);
     matching.sort_by(|a, b| a.item.name.cmp(&b.item.name));
 
     if matching.is_empty() {
