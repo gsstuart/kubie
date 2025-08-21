@@ -175,10 +175,10 @@ behavior:
     # Default: auto
     print_context_in_exec: auto
 
-    # Parse the context argument to `kubie exec` as a space-delimited list, allowing
+    # Parse the CONTEXT_NAME argument to `kubie exec` as a space-delimited list, allowing
     # multiple patterns to be specified.
     # Example:
-    #   `kubie exec 'dev-* pre-* staging-1 prod-2' kube-system -- kubectl get po`
+    #   kubie exec 'dev-* pre-* staging-1 prod-2' kube-system -- kubectl get po
     # Default: false
     multiple_contexts_in_exec: false
 
