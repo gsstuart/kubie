@@ -198,10 +198,7 @@ impl Installed {
             .ok_or_else(|| anyhow!("Could not find context {}", context_name))?;
 
         context_src.item.context.namespace = namespace_name.map(Into::into);
-        let kubeconfig_dir = context_src
-            .source
-            .parent()
-            .expect("kubeconfig path should have a parent dir");
+        let kubeconfig_dir = context_src.source.parent().expect("kubeconfig path should have a parent dir");
 
         let cluster_src = self
             .find_cluster_by_name(&context_src.item.context.cluster, &context_src.source)
