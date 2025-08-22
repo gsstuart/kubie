@@ -181,14 +181,7 @@ impl Installed {
         let str = mapping.get(key).unwrap().as_str().expect("value should be a string");
         let path = Path::new(str);
         if !path.is_absolute() {
-            mapping.insert(
-                key.into(),
-                parent
-                    .join(path)
-                    .to_str()
-                    .expect("path should be a valid unicode string")
-                    .into(),
-            );
+            mapping.insert(key.into(), parent.join(path).to_str().expect("path should be a valid unicode string").into());
         }
     }
 
