@@ -133,6 +133,8 @@ impl Installed {
             }
             result.extend(m);
         }
+        result.sort_by_key(|k| &k.item.name);
+        result.dedup_by_key(|k| &k.item.name);
         result
     }
 
