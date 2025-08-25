@@ -58,7 +58,7 @@ pub fn exec(
     }
 
     let installed = kubeconfig::get_installed_contexts(settings)?;
-    let matching = installed.get_contexts_matching(&context_name, settings.behavior.allow_multiple_contexts);
+    let matching = installed.get_contexts_matching(&context_name, settings.behavior.allow_multiple_context_patterns);
 
     if matching.is_empty() {
         return Err(anyhow!("No context matching {}", context_name));
