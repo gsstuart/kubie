@@ -116,10 +116,10 @@ impl Installed {
             .collect()
     }
 
-    pub fn get_contexts_matching(&self, pattern: &str, allow_multiple_contexts: bool) -> Vec<&Sourced<NamedContext>> {
+    pub fn get_contexts_matching(&self, pattern: &str, allow_multiple_context_patterns: bool) -> Vec<&Sourced<NamedContext>> {
         let mut result = vec![];
 
-        let patterns = if allow_multiple_contexts {
+        let patterns = if allow_multiple_context_patterns {
             pattern.split(' ').collect()
         } else {
             vec![pattern]

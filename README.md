@@ -180,7 +180,7 @@ behavior:
     # Example:
     #   kubie exec 'dev-* pre-* staging-1 prod-2' kube-system -- kubectl get po
     # Default: false
-    allow_multiple_contexts: false
+    allow_multiple_context_patterns: false
 
 # Optional start and stop hooks
 hooks:
